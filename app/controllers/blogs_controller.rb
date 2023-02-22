@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :get_blog, only: %i[update destroy]
 
+  # Fetch all blogs
   def index
     @blogs = Blog.all
     if @blogs
@@ -10,6 +11,7 @@ class BlogsController < ApplicationController
     end
   end
 
+  # Create new blog
   def create
     blog = Blog.new(blog_params)
     if blog.save
@@ -19,6 +21,7 @@ class BlogsController < ApplicationController
     end
   end
 
+  # Update blog
   def update
     if @blog.present?
       if @blog.update(blog_params)
@@ -31,6 +34,7 @@ class BlogsController < ApplicationController
     end
   end
 
+  # Delete blog
   def destroy
     if @blog.present?
       if @blog.destroy
